@@ -5,6 +5,15 @@ app.use(bodyParser.json());
 
 
 
+let response={
+
+};
+
+app.get('/bfhl',(req,res)=>{
+    let list=JSON.stringify(response);
+    res.write(list);
+    res.end();
+})
 
 app.post('/bfhl', (req, res) => {
 
@@ -29,7 +38,7 @@ app.post('/bfhl', (req, res) => {
             }
         });
 
-        res.json({
+        response={
           is_success: true,
           user_id: user_id,
           email: email,
@@ -37,7 +46,8 @@ app.post('/bfhl', (req, res) => {
           odd_numbers: odd_numbers,
           even_numbers: even_numbers,
           alphabets: alphabets
-      });
+      };
+        res.json(response);
 });
 
 
